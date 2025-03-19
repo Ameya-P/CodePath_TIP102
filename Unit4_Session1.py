@@ -236,32 +236,407 @@
 
 #     return (nft_values[left],nft_values[right] )
 
-def find_closest_nft_values(nft_values, budget):
+# def find_closest_nft_values(nft_values, budget):
+#     left = 0
+#     right = len(nft_values) - 1
+
+#     if nft_values[left] > budget:
+#         return (None, nft_values[left])
+    
+#     if nft_values[right] < budget:
+#         return (nft_values[right], None)
+    
+#     while right - left > 1:
+#         middle = (right + left) // 2
+
+#         if nft_values[middle] < budget:
+#             left = middle 
+#         elif nft_values[middle] > budget:
+#             right = middle
+#         else: 
+#             left, right = middle, middle 
+    
+#     return (nft_values[left],nft_values[right])
+
+# def find_closest_nft_values_old(nft_values, budget):
+#     left = 0
+#     right = len(nft_values) - 1
+
+#     if nft_values[left] > budget:
+#         return (None, nft_values[left])
+    
+#     if nft_values[right] < budget:
+#         return (nft_values[right], None)
+    
+#     while right - left > 1:
+#         middle = (right + left) // 2
+
+#         if nft_values[middle] < budget:
+#             left = middle 
+#         elif nft_values[middle] > budget:
+#             right = middle
+#         else: 
+#             left, right = middle, middle 
+    
+#     return (nft_values[left],nft_values[right])
+
+# def find_closest_nft_values(nft_values, budget):
+#     left = 0
+#     right = len(nft_values) - 1
+#     closest_below = None
+#     closest_above = None
+    
+#     while left < right:
+#         middle = (right + left) // 2
+
+#         if nft_values[middle] == budget:
+#             closest_below = closest_above = budget
+#             left = right = middle
+#         elif nft_values[middle] < budget:
+#             closest_below = nft_values[middle]
+#             left = middle + 1
+#         elif nft_values[middle] > budget:
+#             closest_above = nft_values[middle]
+#             right = middle - 1
+    
+#     return (closest_below, closest_above)
+
+# nft_values = [3.5, 5.4, 8.0, 8.0, 8.9]
+# nft_values_2 = [2.0, 4.5, 6.3, 7.8, 12.1]
+# nft_values_3 = [1.0, 2.5, 4.0, 6.0, 9.0]
+
+# print(find_closest_nft_values(nft_values, 8))
+# print(find_closest_nft_values(nft_values_2, 6.5))
+# print(find_closest_nft_values(nft_values_3, 3.0))
+
+# def filter_meme_lengths(memes, max_length):
+#     #Time: O(n), Space: O(n)
+#     result = []
+#     for meme in memes:
+#         if len(meme) <= max_length:
+#             result.append(meme)
+    
+#     return result
+
+# memes = ["This is hilarious!", "A very long meme that goes on and on and on...", "Short and sweet", "Too long! Way too long!"]
+# memes_2 = ["Just right", "This one's too long though, sadly", "Perfect length", "A bit too wordy for a meme"]
+# memes_3 = ["Short", "Tiny meme", "Small but impactful", "Extremely lengthy meme that no one will read"]
+
+# print(filter_meme_lengths(memes, 20))
+# print(filter_meme_lengths(memes_2, 15))
+# print(filter_meme_lengths(memes_3, 10))
+
+# def count_meme_creators(memes):
+#     #Time: O(n), Space: O(n)
+#     counts = {}
+#     for meme in memes:
+#         creator = meme["creator"]
+#         if creator not in counts:
+#             counts[creator] = 1
+#         else:
+#             counts[creator] += 1
+    
+#     return counts
+
+# memes = [
+#     {"creator": "Alex", "text": "Meme 1"},
+#     {"creator": "Jordan", "text": "Meme 2"},
+#     {"creator": "Alex", "text": "Meme 3"},
+#     {"creator": "Chris", "text": "Meme 4"},
+#     {"creator": "Jordan", "text": "Meme 5"}
+# ]
+
+# memes_2 = [
+#     {"creator": "Sam", "text": "Meme 1"},
+#     {"creator": "Sam", "text": "Meme 2"},
+#     {"creator": "Sam", "text": "Meme 3"},
+#     {"creator": "Taylor", "text": "Meme 4"}
+# ]
+
+# memes_3 = [
+#     {"creator": "Blake", "text": "Meme 1"},
+#     {"creator": "Blake", "text": "Meme 2"}
+# ]
+
+# print(count_meme_creators(memes))
+# print(count_meme_creators(memes_2))
+# print(count_meme_creators(memes_3))
+
+# def find_trending_memes(memes):
+#     #Time: O(n), Space: O(n)
+#     meme_set = set()
+#     result_set = set()
+#     for meme in memes:
+#         if meme in meme_set:
+#             result_set.add(meme)
+#         else:
+#             meme_set.add(meme)
+    
+#     return list(result_set)
+
+# memes = ["Dogecoin to the moon!", "One does not simply walk into Mordor", "Dogecoin to the moon!", "Distracted boyfriend", "One does not simply walk into Mordor"]
+# memes_2 = ["Surprised Pikachu", "Expanding brain", "This is fine", "Surprised Pikachu", "Surprised Pikachu"]
+# memes_3 = ["Y U No?", "First world problems", "Philosoraptor", "Bad Luck Brian"]
+
+# print(find_trending_memes(memes))
+# print(find_trending_memes(memes_2))
+# print(find_trending_memes(memes_3))
+
+# def reverse_memes(memes):
+#     #Time: O(n), Space: O(1)
+#     left = 0
+#     right = len(memes) - 1
+
+#     while left < right:
+#         memes[left], memes[right] = memes[right], memes[left]
+#         left += 1
+#         right -= 1
+
+#     return memes
+
+# memes = ["Dogecoin to the moon!", "Distracted boyfriend", "One does not simply walk into Mordor"]
+# memes_2 = ["Surprised Pikachu", "Expanding brain", "This is fine"]
+# memes_3 = ["Y U No?", "First world problems", "Philosoraptor", "Bad Luck Brian"]
+
+# print(reverse_memes(memes))
+# print(reverse_memes(memes_2))
+# print(reverse_memes(memes_3))
+
+# def find_trending_meme_pairs(meme_posts):
+#     pair_count = {}
+
+#     for post in meme_posts:
+#         for i in range(len(post)):
+#             for j in range(len(post)):
+#                 if i != j:
+#                     meme1 = post[i]
+#                     meme2 = post[j]
+
+#                     if meme1 < meme2:
+#                         meme1, meme2 = meme2, meme1
+#                     pair = (meme1, meme2)
+#                     if pair in pair_count:
+#                         pair_count[pair] += 1
+#                     else:
+#                         pair_count[pair] = 1
+
+#     trending_pairs = []
+#     for pair in pair_count:
+#         if pair_count[pair] >= 2:
+#             trending_pairs.append(pair)
+
+#     return trending_pairs
+
+# def my_find_trending_meme_pairs(meme_posts):
+#     if not meme_posts:
+#         return []
+    
+#     pair_counts = {}
+
+#     for post in meme_posts:
+#         for i in range(len(post)):
+#             for j in range(i+1, len(post)):
+#                 tuple_a = (post[i], post[j])
+#                 tuple_b = (post[j], post[i])
+#                 if tuple_a in pair_counts:
+#                     pair_counts[tuple_a] += 1
+#                 elif tuple_b in pair_counts:
+#                     pair_counts[tuple_b] += 1
+#                 else:
+#                     pair_counts[tuple_a] = 1
+
+#     results = []
+#     max_val = max(list(pair_counts.values()))
+
+#     for key, val in pair_counts.items():
+#         if val == max_val:
+#             results.append(key)
+
+#     return results
+
+# def find_trending_meme_pairs(meme_posts):
+#     pair_count = {}
+
+#     for post in meme_posts:
+#         for i in range(len(post)):
+#             for j in range(i+ 1, len(post)):
+#                 if i != j:
+#                     meme1 = post[i]
+#                     meme2 = post[j]
+
+#                     if meme1 > meme2:
+#                         meme1, meme2 = meme2, meme1
+#                     pair = (meme1, meme2)
+#                     if pair in pair_count:
+#                         pair_count[pair] += 1
+#                     else:
+#                         pair_count[pair] = 1
+
+#     trending_pairs = []
+#     for pair, count in pair_count.items():
+#         if count > 1:
+#             trending_pairs.append(pair)
+
+#     return trending_pairs
+
+# meme_posts_1 = [
+
+#     ["Dogecoin to the moon!", "Distracted boyfriend"],
+#     ["One does not simply walk into Mordor", "Dogecoin to the moon!"],
+#     ["Dogecoin to the moon!", "Distracted boyfriend", "One does not simply walk into Mordor"],
+#     ["Distracted boyfriend", "One does not simply walk into Mordor"]
+   
+# ]
+
+# meme_posts_2 = [
+#     ["Surprised Pikachu", "This is fine"],
+#     ["Expanding brain", "Surprised Pikachu"],
+#     ["This is fine", "Expanding brain"],
+#     ["Surprised Pikachu", "This is fine"]
+# ]
+
+# meme_posts_3 = [
+#     ["Y U No?", "First world problems"],
+#     ["Philosoraptor", "Bad Luck Brian"],
+#     ["First world problems", "Philosoraptor"],
+#     ["Y U No?", "First world problems"]
+# ]
+
+# print(find_trending_meme_pairs(meme_posts_1))
+# print(find_trending_meme_pairs(meme_posts_2))
+# print(find_trending_meme_pairs(meme_posts_3))
+
+# from collections import deque
+
+
+# def simulate_meme_reposts(memes, reposts):
+#     #Time: O(R), Space O(R), r = total number of reposts
+#     meme_queue = deque(memes)
+#     repost_queue = deque(reposts)
+#     final_order = []
+
+#     while meme_queue:
+#         current_meme = meme_queue.popleft()
+#         reposts_left = repost_queue.popleft()
+
+#         if reposts_left > 0:
+#             final_order.append(current_meme)
+#             meme_queue.append(current_meme)
+#             repost_queue.append(reposts_left - 1)
+        
+#         print(current_meme, reposts_left)
+    
+#     return final_order
+
+
+# memes = ["Distracted boyfriend", "Dogecoin to the moon!", "One does not simply walk into Mordor"]
+# reposts_1 = [2, 1, 3]
+
+# memes_2 = ["Surprised Pikachu", "This is fine", "Expanding brain"]
+# reposts_2 = [1, 2, 2]
+
+# memes_3 = ["Y U No?", "Philosoraptor"]
+# reposts_3 = [3, 1]
+
+# print(simulate_meme_reposts(memes, reposts_1))
+# print(simulate_meme_reposts(memes_2, reposts_2))
+# print(simulate_meme_reposts(memes_3, reposts_3))
+
+def find_closest_meme_pair(memes, target):
+    prev_l = left = 0
+    prev_r = right = len(memes) - 1
+    previous = None
+
+    while left + 1 < right:
+        current = memes[left][1] + memes[right][1]
+
+        if current == target:
+            break
+        elif current < target:
+            previous = current
+            prev_r = right
+            prev_l = left
+            left += 1
+        elif current > target:
+            previous = current
+            prev_r = right
+            prev_l = left
+            right -= 1
+    
+    return (memes[left][0], memes[right][0])
+
+memes_1 = [("Distracted boyfriend", 5), ("Dogecoin to the moon!", 7), ("One does not simply walk into Mordor", 12)]
+memes_2 = [("Surprised Pikachu", 2), ("This is fine", 6), ("Expanding brain", 9), ("Y U No?", 15)]
+memes_3 = [("Philosoraptor", 1), ("Bad Luck Brian", 4), ("First world problems", 8), ("Y U No?", 13)]
+
+#print(find_closest_meme_pair(memes_1, 13))
+print(find_closest_meme_pair(memes_2, 10))
+print(find_closest_meme_pair(memes_3, 12))
+
+def subarray_sum(nums, k):
+    #Dynamic Sliding Windows Technique 
+    num_sub_arrays = 0
     left = 0
-    right = len(nft_values) - 1
+    right = 1
+    current_sum = None
+    while right < len(nums):
+        current_sum = nums[left] if left == right else nums[left] + nums[right]
 
-    if nft_values[left] > budget:
-        return (None, nft_values[left])
+        if current_sum == k:
+            num_sub_arrays += 1
+            left += 1
+            right += 1
+        elif current_sum < k:
+            right += 1
+        elif current_sum > k:
+            left += 1
+        
+
     
-    if nft_values[right] < budget:
-        return (nft_values[right], None)
+    return num_sub_arrays
+
+print(subarray_sum([1, 1, 1], 2))
+
+
+def subarray_sum(nums, k):
+    #Dynamic Sliding Windows Technique 
+    print(nums, k)
     
-    while right - left > 1:
-        middle = (right + left) // 2
+    num_sub_arrays = 0
+    left = 0
+    right = 1
+    current_sum = None
 
-        if nft_values[middle] < budget:
-            left = middle 
-        elif nft_values[middle] > budget:
-            right = middle
-        else: 
-            left, right = middle, middle 
+    while right < len(nums):
+        current_sum = nums[left] if left == right else nums[left] + nums[right]
+        
+        if current_sum == k:
+            num_sub_arrays += 1
+            left += 1
+            right += 1
+        elif current_sum < k:
+            right += 1
+        elif current_sum > k:
+            left += 1
     
-    return (nft_values[left],nft_values[right])
+    return num_sub_arrays
+        
+    #If subarray is less than k, add element to front.
+    #If subarray is greater than k, remove element from back
 
-nft_values = [3.5, 5.4, 8.0, 8.0, 8.9]
-nft_values_2 = [2.0, 4.5, 6.3, 7.8, 12.1]
-nft_values_3 = [1.0, 2.5, 4.0, 6.0, 9.0]
-
-print(find_closest_nft_values(nft_values, 3.4))
-print(find_closest_nft_values(nft_values_2, 6.5))
-print(find_closest_nft_values(nft_values_3, 3.0))
+    def subarray_sum(nums, k):
+    num_subarrays = 0
+    
+    for i in range(len(nums)):
+        current_sum = 0
+        for j in range(i, len(nums)):
+            
+            if i == j:
+                current_sum = nums[i]
+            else: 
+                current_sum += nums[j]
+            
+            if current_sum == k:
+                num_subarrays += 1
+    
+    return num_subarrays
